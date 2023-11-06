@@ -5,9 +5,10 @@
     <title>My Blog</title>
 </head>
 <body>
-    <header>
-        <h1 class="main-header">"MAIN SITE HEADER</h1>
+    <div id=""particles-js"></div>
 
+    <header>
+        <h1 class="main-header">MAIN SITE HEADER</h1>
     </header>
     <div id=""content">
     {% block content %}{% endblock %} 
@@ -16,6 +17,11 @@
     <footer>
 
     </footer>
+
+    <!-- Scripts -->
+    <!-- particles.js library-->
+    <script src="/static/particles.js"></script>
+    <!-- JS-->
     <script src="{{ url_for('static', filename='script.js')}}"></script>
 </body>
 </html>
