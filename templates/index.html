@@ -3,6 +3,13 @@
 {% block title %}Page Title{% endblock %}
 
 {% block content %}
-    <h1>Welcome you are logged in</h1>
+    <h1>Welcome, log in</h1>
+    <div>
+        <form action="{{ url_for('login') }}" method="post">
+            <p><input type="text" name="username" placeholder="Username"></p>
+            <p><input type="password" name="password" placeholder="Password"></p>
+            <p><input type="submit" value="Log In"></p>
+        </form>
+    </div>
     <a href="{{ url_for('logout') }}">Logout</a>
 {% endblock %}
