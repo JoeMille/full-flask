@@ -3,5 +3,7 @@
 {% block title %}DASHBOARD PAGE{% endblock %}
 
 {% block content %}
-   <h1>DASHBOARD PAGE</h1>
+   <div class="dashboard-header">
+    <h1>DASHBOARD PAGE</h1>
+    <h2>Welcome to your dashboard {{ current_user.id }}</h2>
 {% endblock %}
