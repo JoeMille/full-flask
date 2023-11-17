@@ -26,7 +26,7 @@ def login():
         if username in users and users[username]['password'] == password:
             user = User(username)
             login_user(user)
-            return redirect(url_for('home'))
+            return redirect(url_for('dashboard'))
         else:
             return 'Invalid username or password'
     else:
@@ -41,6 +41,11 @@ def logout():
 @app.route('/')
 def home():
     return render_template('index.html')
+
+@app.route('/dashboard')
+@login_required 
+def dashboard():
+    return render_template('dashboard.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
