@@ -3,7 +3,34 @@
 {% block title %}DASHBOARD PAGE{% endblock %}
 
 {% block content %}
-   <div class="dashboard-header">
+<!-- Dashboard HTML content -->
+
+<!-- Header-->
+<div class="dashboard-header">
     <h1>DASHBOARD PAGE</h1>
     <h2>Welcome to your dashboard {{ current_user.id }}</h2>
+</div>
+
+<!-- Post Section,-->
+<div id="post-window">
+    <!-- Create a new post form-->
+    <form action="" method="post">
+        <textarea name="content" placeholder="Write a post..."></textarea>
+        <button type="submit">Post</button>
+    </form>
+</div>
+
+<!-- Display Posts -->
+
+<div id="posts">
+    {% for post in posts %}
+    <div class="posts">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Footer -->
+
 {% endblock %}
