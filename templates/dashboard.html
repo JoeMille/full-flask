@@ -14,7 +14,7 @@
 <!-- Post Section,-->
 <div id="post-window">
     <!-- Create a new post form-->
-    <form action="" method="post">
+    <form action="{{ url_for('create_post') }}" method="post">
         <textarea name="content" placeholder="Write a post..."></textarea>
         <button type="submit">Post</button>
     </form>
