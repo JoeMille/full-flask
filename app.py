@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from flask_pymongo import PyMongo
+from pymongo import MongoClient
+from bson.objectid import ObjectId
 
 app = Flask (__name__)
 app.secret_key = 'mysecretkey'
@@ -41,23 +43,38 @@ def logout():
     logout_user()
     return 'Logged out successfully!'
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template('index.html')
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+        store_post(title, content)
+        return redirect(url_for('dashboard'))
+    else:
+        all_posts = posts.find()
+        return render_template('index.html', posts=all_posts)
 
 @app.route('/dashboard')
 @login_required 
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/create_post', methods=['POST'])
-@login_required
-def create_post():
-    content = request.form.get('content')
+# Connect to MongoDB
+client = MongoClient('mongodb://localhost:27017/')
+db = client['blog_database']
+posts = db['posts']
 
-    mongo.db.posts.insert_one({'title': 'Post by ' + current_user.id, 'content': content})
-
+@app.route('/delete_post/<post_id>', methods=['POST'])
+def delete_post(post_id):
+    posts.delete_one({'_id': ObjectId(post_id)})
     return redirect(url_for('dashboard'))
+
+def store_post(title, content):
+    post_data = {
+        'title': title,
+        'content': content
+    }
+    posts.insert_one(post_data)
 
 if __name__ == '__main__':
     app.run(debug=True)
