@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from flask_pymongo import PyMongo
 
 app = Flask (__name__)
 app.secret_key = 'mysecretkey'
+app.config["MONGO_URI"] = mongodb_uri = "mongodb+srv://chefjoemiller1992:Password@cluster0.oydtt0h.mongodb.net/myDatabase"
+mongo = PyMongo(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -12,7 +15,7 @@ class User(UserMixin):
     def __init__(self, id):
         self.id = id
 
-users = {'Joe': {'password': 'Torbay321'}}
+users = {'Joe': {'password': '12345'}}
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -46,6 +49,15 @@ def home():
 @login_required 
 def dashboard():
     return render_template('dashboard.html')
+
+@app.route('/create_post', methods=['POST'])
+@login_required
+def create_post():
+    content = request.form.get('content')
+
+    mongo.db.posts.insert_one({'title': 'Post by ' + current_user.id, 'content': content})
+
+    return redirect(url_for('dashboard'))
 
 if __name__ == '__main__':
     app.run(debug=True)
