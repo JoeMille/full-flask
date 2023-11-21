@@ -54,10 +54,16 @@ def home():
         all_posts = posts.find()
         return render_template('index.html', posts=all_posts)
 
-@app.route('/dashboard')
-@login_required 
+@app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    return render_template('dashboard.html')
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+        store_post(title, content)
+        return redirect(url_for('dashboard'))
+    else:
+        all_posts = posts.find()
+        return render_template('dashboard.html', posts=all_posts)
 
 # Connect to MongoDB
 client = MongoClient('mongodb://localhost:27017/')
