@@ -61,7 +61,8 @@ body {
 
 /* Post form and post styles */
 .posts-container {
-    margin-bottom: 300px; /* Adjust this value to create more or less space */  
+    margin-bottom: 300px; /* Adjust this value to create more or less space */
+    opacity: 0; 
 }
 
 .post {
