@@ -22,9 +22,9 @@ class User(UserMixin):
 users = {'Joe': {'password': '12345'}}
 
 @login_manager.user_loader
-def load_user(username):
+def load_user(user_id):
     users = mongo.db.users
-    user_data = users.find_one({'username': username})
+    user_data = users.find_one({'_id': ObjectId(user_id)})
     if user_data:
         return User(id=str(user_data['_id']), username=user_data['username'])
     return None
@@ -61,7 +61,7 @@ def login():
 
     return render_template('index.html')
 
-@app.route('/logout')
+@app.route('/logout', methods=['GET', 'POST'])
 @login_required
 def logout():
     logout_user()

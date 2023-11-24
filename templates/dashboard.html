@@ -12,6 +12,7 @@
 {% for post in posts %}
     <h2 class="post-title">{{ post.title }}</h2>
     <p class="post-content">{{ post.content }}</p>
+    <p class="post-author">Posted by: {{ post.author }}</p>
     <form method="POST" action="{{ url_for('delete_post', post_id=post._id) }}">
         <input type="submit" value="Delete">
     </form>
@@ -24,6 +25,10 @@
     <label for="content">Content:</label><br>
     <textarea id="content" name="content" required></textarea><br>
     <input type="submit" value="Submit">
-
 </form>
+
+<form action="{{ url_for('logout') }}" method="POST">
+    <input type="submit" value="Logout">
+</form>
+
 {% endblock %}
