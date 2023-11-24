@@ -10,25 +10,29 @@
     <h2>Please login, or create account</h2>
 </div>
 
-<!-- Login form for existing user -->
-<div class="login-form">
-    <form action="{{ url_for('login') }}" method="post">
-        <p><input type="text" name="username" placeholder="Username"></p>
-        <p><input type="password" name="password" placeholder="Password"></p>
-        <p><input type="submit" value="Log In"></p>
-     </form>
-</div>
+ <!-- Container for the forms -->
+ <div class="form-container">
+    <!-- Login form for existing user -->
+    <div class="login-form">
+        <h2>Login Here!</h2>
+        <form action="{{ url_for('login') }}" method="post">
+            <p><input type="text" name="username" placeholder="Username"></p>
+            <p><input type="password" name="password" placeholder="Password"></p>
+            <p><input type="submit" value="Log In"></p>
+        </form>
+    </div>
 
-<!-- Register new user form -->
-<div class="register-form">
-    <h2>Create a new account</h2>
-    <form action="{{ url_for('register') }}" method="post">
-        <p><input type="text" name="username" placeholder="Username"></p>
-        <p><input type="password" name="password" placeholder="Password"></p>
-        <p><input type="submit" value="Register"></p>
-    </form>
+    <!-- Register new user form -->
+    <div class="register-form">
+        <h2>Create a new account</h2>
+        <form action="{{ url_for('register') }}" method="post">
+            <p><input type="text" name="username" placeholder="Username"></p>
+            <p><input type="password" name="password" placeholder="Password"></p>
+            <p><input type="submit" value="Register"></p>
+        </form>
+    </div>
 </div>
 
 <!-- Logout button -->
-<a href="{{ url_for('logout') }}">Logout</a>
+<a href="{{ url_for('logout') }}" class="index-page-logout">Logout</a>
 {% endblock %}

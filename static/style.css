@@ -16,13 +16,18 @@ body {
     border: 5px solid #ffffff;
 }
 
-.login-form {
+.form-container {
+    display: flex;
     justify-content: center;
+    padding-top: 20px; /* Adjust this value to create more or less space */
+}
+
+.login-form, .register-form {
     background-color: #7743de;
     border-radius: 10px;
-    margin: 0 auto;
     padding: 10px;
     width: 200px;
+    margin: 0 10px; /* Add some space between the forms */
 }
 
 .dashboard-header {
@@ -43,43 +48,43 @@ body {
 
 .post-form {
     position: fixed; 
-    bottom: 0; /* Positions the form at the bottom of the screen */
-    width: 100%; /* Makes the form span the width of the page */
+    bottom: 0; 
+    width: 100%; 
     background-color: #7743de;
     font-size: 25px;
     font-family: 'Bebas Neue', cursive;
-    color: #ffffff; /* Makes the text white */
+    color: #ffffff; 
     border-radius: 10px;
     padding: 10px;
-    display: flex; /* Makes the form a flex container */
-    justify-content: center; /* Centers the form's content horizontally */
-    align-items: center; /* Centers the form's content vertically */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
     flex-wrap: wrap;
 }
 
 .post-form textarea {
     font-family: 'Bebas Neue', cursive;
-    width: 80%; /* Makes the text areas 80% of the form's width */
-    height: 50px; /* Adjust this value to change the height of the text areas */
+    width: 80%; 
+    height: 50px; 
 }
 
 .post {
     font-family: 'Bebas Neue', cursive;
-    border: 1px solid; /* Border around the whole post */
-    background-color: white; /* White background */
-    padding: 10px; /* Space between the border and the post content */
-    margin-bottom: 20px; /* Space between posts */
+    border: 1px solid; 
+    background-color: white; 
+    padding: 10px; 
+    margin-bottom: 20px; 
 }
 
 .post-title, .post-content, .post-author {
-    font-size: 2em; /* Large text */
-    width: 100%; /* Span the width of the page */
+    font-size: 2em; 
+    width: 100%; 
 }
 
 .post-title {
-    border-bottom: 1px solid; /* Thin underline border */
+    border-bottom: 1px solid; 
 }
 
 .post-content {
-    margin-bottom: 20px; /* Space between posts */
+    margin-bottom: 20px; 
 }
