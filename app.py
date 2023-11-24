@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
@@ -97,14 +97,14 @@ posts = db['posts']
 @app.route('/delete_post/<post_id>', methods=['POST'])
 @login_required
 def delete_post(post_id):
-    post = mongo.db.posts.find_one({'_id': ObjectId(post_id)})
-
-    if post['author'] == current_user.username:
-        mongo.db.posts.delete_one({'_id': ObjectId(post_id)})
-        return redirect(url_for('dashboard'))
+    posts = mongo.db.posts
+    post = posts.find_one({'_id': ObjectId(post_id)})
+    if post and post['author'] == current_user.username:
+        posts.delete_one({'_id': ObjectId(post_id)})
+        flash('Your post has been deleted!', 'success')
     else:
-        # Redirect to dashboard or display an error message
-        return redirect(url_for('dashboard'))
+        flash('You cannot delete this post', 'danger')
+    return redirect(url_for('dashboard'))
 
 def store_post(title, content):
     post_data = {

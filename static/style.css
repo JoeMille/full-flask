@@ -5,7 +5,7 @@ body {
     background-color: #1c0ee3;
     text-align: left;
     margin: 0;
-    padding: 0;
+    padding-bottom: 100px;;
 }
 
 .home-page-header {
@@ -59,4 +59,24 @@ body {
 .post-form textarea {
     width: 80%; /* Makes the text areas 80% of the form's width */
     height: 50px; /* Adjust this value to change the height of the text areas */
+}
+
+.post {
+    border: 1px solid; /* Border around the whole post */
+    background-color: white; /* White background */
+    padding: 10px; /* Space between the border and the post content */
+    margin-bottom: 20px; /* Space between posts */
+}
+
+.post-title, .post-content, .post-author {
+    font-size: 2em; /* Large text */
+    width: 100%; /* Span the width of the page */
+}
+
+.post-title {
+    border-bottom: 1px solid; /* Thin underline border */
+}
+
+.post-content {
+    margin-bottom: 20px; /* Space between posts */
 }

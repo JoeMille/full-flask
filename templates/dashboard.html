@@ -9,18 +9,21 @@
 <h2>WHATS ON YOUR MIND?:</h2>
 </header>
 <!-- to display post  updates -->
+<h2 class="post-form-h2">Post here</h2>
+
 {% for post in posts %}
-    <h2 class="post-title">{{ post.title }}</h2>
-    <p class="post-content">{{ post.content }}</p>
-    <p class="post-author">Posted by: {{ post.author }}</p>
-    {% if post.author == current_user.username %}
-        <form method="POST" action="{{ url_for('delete_post', post_id=post._id) }}">
-            <input type="submit" value="Delete">
-        </form>
-    {% endif %}
+    <div class="post">
+        <h2 class="post-title">{{ post.title }}</h2>
+        <p class="post-content">{{ post.content }}</p>
+        <p class="post-author">Posted by: {{ post.author }}</p>
+        {% if post.author == current_user.username %}
+            <form method="POST" action="{{ url_for('delete_post', post_id=post._id) }}">
+                <input type="submit" value="Delete">
+            </form>
+        {% endif %}
+    </div>
 {% endfor %}
 
-<h2 class="post-form-h2">Post here</h2>
 <form method="POST" action="{{ url_for('dashboard') }}" class="post-form">    
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title" required><br>
