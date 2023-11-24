@@ -36,10 +36,11 @@ def register():
         existing_user = users.find_one({'username': request.form['username']})
 
         if existing_user is None:
-            hashpass = generate_password_hash(request.form['password'], method='sha256')
+            hashpass = generate_password_hash(request.form['password'])
             users.insert_one({'username': request.form['username'], 'password': hashpass})
-        
-        return 'Username taken! try again or login'
+            return 'User created! Please login.'
+        else:
+            return 'Username taken! try again or login'
     
     return render_template('register.html')
    
@@ -48,17 +49,17 @@ def register():
 def login():
     if request.method == 'POST':
         users = mongo.db.users
-        login_user = users.find_one({'username': request.form['username']})
+        user_login = users.find_one({'username': request.form['username']})
 
-        if login_user:
-            if check_password_hash(login_user['password'], request.form['password']):
-                user_obj = User(id=str(login_user['_id']), username=login_user['username'])
+        if user_login:
+            if check_password_hash(user_login['password'], request.form['password']):
+                user_obj = User(id=str(user_login['_id']), username=user_login['username'])
                 login_user(user_obj)
                 return redirect(url_for('dashboard'))
         
         return 'Invalid, try again or register'
 
-    return render_template('login.html')
+    return render_template('index.html')
 
 @app.route('/logout')
 @login_required

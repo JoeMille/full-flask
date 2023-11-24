@@ -15,5 +15,15 @@
         <p><input type="submit" value="Log In"></p>
      </form>
 </div>
-    <a href="{{ url_for('logout') }}">Logout</a>
+
+<div class="register-form">
+    <h2>Create a new account</h2>
+    <form action="{{ url_for('register') }}" method="post">
+        <p><input type="text" name="username" placeholder="Username"></p>
+        <p><input type="password" name="password" placeholder="Password"></p>
+        <p><input type="submit" value="Register"></p>
+    </form>
+</div>
+
+<a href="{{ url_for('logout') }}">Logout</a>
 {% endblock %}
