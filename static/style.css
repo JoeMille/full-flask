@@ -5,8 +5,10 @@ body {
     background-color: #1c0ee3;
     text-align: left;
     margin: 0;
-    padding-bottom: 100px;;
+    padding-bottom: 400px;
 }
+
+/* Index/login page styles */
 
 .home-page-header {
     color: #ffffff;
@@ -16,6 +18,8 @@ body {
     border: 5px solid #ffffff;
 }
 
+/* Login/ logout and register forms */
+
 .form-container {
     display: flex;
     justify-content: center;
@@ -23,12 +27,29 @@ body {
 }
 
 .login-form, .register-form {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 15px;
     background-color: #7743de;
     border-radius: 10px;
     padding: 10px;
     width: 200px;
     margin: 0 10px; /* Add some space between the forms */
 }
+
+.index-page-logout {
+    display: block;
+    width: 200px;
+    height: 50px;
+    line-height: 50px; /* Vertically center the text */
+    margin: 20px auto; /* Center the button and add padding on top */
+    color: #ffffff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px;
+    text-align: center;
+    border: 5px solid #ffffff;
+}
+
+/* Dashboard page styles */
 
 .dashboard-header {
     color: #ffffff;
@@ -38,34 +59,9 @@ body {
     border: 5px solid #ffffff;
 }
 
-.post-form-h2 {
-    color: #ffffff;
-    font-family: 'Bebas Neue', cursive;
-    font-size: 20px;
-    text-align: center;
-    border: 5px solid #ffffff;
-}
-
-.post-form {
-    position: fixed; 
-    bottom: 0; 
-    width: 100%; 
-    background-color: #7743de;
-    font-size: 25px;
-    font-family: 'Bebas Neue', cursive;
-    color: #ffffff; 
-    border-radius: 10px;
-    padding: 10px;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    flex-wrap: wrap;
-}
-
-.post-form textarea {
-    font-family: 'Bebas Neue', cursive;
-    width: 80%; 
-    height: 50px; 
+/* Post form and post styles */
+.posts-container {
+    margin-bottom: 300px; /* Adjust this value to create more or less space */  
 }
 
 .post {
@@ -87,4 +83,60 @@ body {
 
 .post-content {
     margin-bottom: 20px; 
+}
+
+/* Author-post form styles */
+
+.post-form-h2 {
+    color: #ffffff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px;
+    text-align: center;
+    border: 5px solid #ffffff;
+}
+
+.post-form {
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
+    background-color: #7743de;
+    font-size: 25px;
+    font-family: 'Bebas Neue', cursive;
+    color: #ffffff; 
+    border-radius: 10px;
+    padding: 10px;
+    display: flex; 
+    flex-direction: column; /* Stack the title bubble and content area vertically */
+    align-items: stretch; /* Make the children take up the full width */
+}
+
+.title-bubble {
+    background-color: #7743de;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px; /* Add some space between the title bubble and the content area */
+}
+
+.content-area {
+    flex-grow: 1; /* Make the content area take up the remaining space */
+}
+
+.post-form textarea {
+    font-family: 'Bebas Neue', cursive;
+    width: 100%; /* Make the textarea take up the full width */
+    height: 200px; 
+}
+
+/* Post submit button styles */
+.post-submit-button {
+    display: block;
+    width: 200px; /* Set a fixed width */
+    height: 50px;
+    line-height: 50px; /* Vertically center the text */
+    margin: 20px auto; /* Center the button and add padding on top */
+    color: #ffffff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 40px;
+    text-align: center;
+    border: 5px solid #ffffff;
 }

@@ -8,11 +8,14 @@
 <!-- Displays dashboard header welcoming user by their login name-->
 <header class="dashboard-header">
 <h1>DASHBOARD</h1>
-<h2>Welcome {{ current_user.username }}</h2>
 </header>
 
 <!-- to display post  updates -->
-<h2 class="post-form-h2">Post here</h2>
+<h2 class="post-form-h2">Welcome {{ current_user.username }}Post here</h2>
+<!-- Logout button -->
+<form action="{{ url_for('logout') }}" method="POST" class="index-page-logout">
+    <input type="submit" value="Logout">
+</form>
 
 <!-- Displays post updates (Users can delete their own posts)-->
 {% for post in posts %}
@@ -30,16 +33,16 @@
 
 <!-- Create post form -->
 <form method="POST" action="{{ url_for('dashboard') }}" class="post-form">    
-    <label for="title">Title:</label><br>
-    <input type="text" id="title" name="title" required><br>
-    <label for="content">Content:</label><br>
-    <textarea id="content" name="content" required></textarea><br>
+    <div class="title-bubble">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" required><br>
+    </div>
+    <div class="content-area">
+        <label for="content">Content:</label><br>
+        <textarea id="content" name="content" required></textarea><br>
+    </div>
     <input type="submit" value="Submit">
 </form>
 
-<!-- Logout button -->
-<form action="{{ url_for('logout') }}" method="POST">
-    <input type="submit" value="Logout">
-</form>
 
 {% endblock %}
