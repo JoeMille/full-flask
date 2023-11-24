@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask (__name__)
 app.secret_key = 'mysecretkey'
-app.config["MONGO_URI"] = mongodb_uri = "mongodb+srv://chefjoemiller1992:Password@cluster0.oydtt0h.mongodb.net/myDatabase"
+app.config["MONGO_URI"] = "mongodb+srv://chefjoemiller1992:Password@cluster0.oydtt0h.mongodb.net/myDatabase?tls=true&tlsAllowInvalidCertificates=true"
 mongo = PyMongo(app)
 
 login_manager = LoginManager()
@@ -64,7 +64,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return 'Logged out successfully!'
+    return redirect(url_for('login'))
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -78,15 +78,15 @@ def home():
         return render_template('index.html', posts=all_posts)
 
 @app.route('/dashboard', methods=['GET', 'POST'])
+@login_required
 def dashboard():
     if request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
-        store_post(title, content)
+        posts = mongo.db.posts
+        posts.insert_one({'title': request.form['title'], 'content': request.form['content'], 'author': current_user.username})
         return redirect(url_for('dashboard'))
-    else:
-        all_posts = posts.find()
-        return render_template('dashboard.html', posts=all_posts)
+
+    posts = mongo.db.posts.find({'author': current_user.username})
+    return render_template('dashboard.html', posts=posts)
 
 # Connect to MongoDB
 client = MongoClient('mongodb://localhost:27017/')
@@ -94,8 +94,10 @@ db = client['blog_database']
 posts = db['posts']
 
 @app.route('/delete_post/<post_id>', methods=['POST'])
+@login_required
 def delete_post(post_id):
-    posts.delete_one({'_id': ObjectId(post_id)})
+    posts = mongo.db.posts
+    posts.delete_one({'_id': ObjectId(post_id), 'author': current_user.username})
     return redirect(url_for('dashboard'))
 
 def store_post(title, content):
