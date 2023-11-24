@@ -54,14 +54,17 @@ body {
     display: flex; /* Makes the form a flex container */
     justify-content: center; /* Centers the form's content horizontally */
     align-items: center; /* Centers the form's content vertically */
+    flex-wrap: wrap;
 }
 
 .post-form textarea {
+    font-family: 'Bebas Neue', cursive;
     width: 80%; /* Makes the text areas 80% of the form's width */
     height: 50px; /* Adjust this value to change the height of the text areas */
 }
 
 .post {
+    font-family: 'Bebas Neue', cursive;
     border: 1px solid; /* Border around the whole post */
     background-color: white; /* White background */
     padding: 10px; /* Space between the border and the post content */
