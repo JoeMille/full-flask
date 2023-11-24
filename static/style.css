@@ -61,11 +61,12 @@ body {
 
 /* Post form and post styles */
 .posts-container {
-    margin-bottom: 300px; /* Adjust this value to create more or less space */
-    opacity: 0; 
+    margin-top: 20px;
+    margin-bottom: 50px; /* Adjust this value to create more or less space */
 }
 
 .post {
+    display: none;
     font-family: 'Bebas Neue', cursive;
     border: 1px solid; 
     background-color: white; 
@@ -88,14 +89,6 @@ body {
 
 /* Author-post form styles */
 
-.post-form-h2 {
-    color: #ffffff;
-    font-family: 'Bebas Neue', cursive;
-    font-size: 20px;
-    text-align: center;
-    border: 5px solid #ffffff;
-}
-
 .post-form {
     position: fixed; 
     bottom: 0; 
@@ -109,6 +102,14 @@ body {
     display: flex; 
     flex-direction: column; /* Stack the title bubble and content area vertically */
     align-items: stretch; /* Make the children take up the full width */
+}
+
+.post-form-h2 {
+    color: #ffffff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px;
+    text-align: center;
+    border: 5px solid #ffffff;
 }
 
 .title-bubble {
@@ -135,9 +136,10 @@ body {
     height: 50px;
     line-height: 50px; /* Vertically center the text */
     margin: 20px auto; /* Center the button and add padding on top */
-    color: #ffffff;
+    background-color: #ffffff;
     font-family: 'Bebas Neue', cursive;
     font-size: 40px;
     text-align: center;
     border: 5px solid #ffffff;
+    z-index: 9999;
 }
