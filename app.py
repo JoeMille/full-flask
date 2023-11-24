@@ -86,7 +86,7 @@ def dashboard():
         posts.insert_one({'title': request.form['title'], 'content': request.form['content'], 'author': current_user.username})
         return redirect(url_for('dashboard'))
 
-    posts = mongo.db.posts.find({'author': current_user.username})
+    posts = mongo.db.posts.find()
     return render_template('dashboard.html', posts=posts)
 
 # Connect to MongoDB
@@ -97,9 +97,14 @@ posts = db['posts']
 @app.route('/delete_post/<post_id>', methods=['POST'])
 @login_required
 def delete_post(post_id):
-    posts = mongo.db.posts
-    posts.delete_one({'_id': ObjectId(post_id), 'author': current_user.username})
-    return redirect(url_for('dashboard'))
+    post = mongo.db.posts.find_one({'_id': ObjectId(post_id)})
+
+    if post['author'] == current_user.username:
+        mongo.db.posts.delete_one({'_id': ObjectId(post_id)})
+        return redirect(url_for('dashboard'))
+    else:
+        # Redirect to dashboard or display an error message
+        return redirect(url_for('dashboard'))
 
 def store_post(title, content):
     post_data = {

@@ -13,9 +13,11 @@
     <h2 class="post-title">{{ post.title }}</h2>
     <p class="post-content">{{ post.content }}</p>
     <p class="post-author">Posted by: {{ post.author }}</p>
-    <form method="POST" action="{{ url_for('delete_post', post_id=post._id) }}">
-        <input type="submit" value="Delete">
-    </form>
+    {% if post.author == current_user.username %}
+        <form method="POST" action="{{ url_for('delete_post', post_id=post._id) }}">
+            <input type="submit" value="Delete">
+        </form>
+    {% endif %}
 {% endfor %}
 
 <h2 class="post-form-h2">Post here</h2>
