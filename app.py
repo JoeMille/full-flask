@@ -22,9 +22,9 @@ class User(UserMixin):
 users = {'Joe': {'password': '12345'}}
 
 @login_manager.user_loader
-def load_user(user_id):
+def load_user(username):
     users = mongo.db.users
-    user_data = users.find_one({'_id': ObjectId(user_id)})
+    user_data = users.find_one({'username': username})
     if user_data:
         return User(id=str(user_data['_id']), username=user_data['username'])
     return None
@@ -47,16 +47,18 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        if username in users and users[username]['password'] == password:
-            user = User(username)
-            login_user(user)
-            return redirect(url_for('dashboard'))
-        else:
-            return 'Invalid username or password'
-    else:
-        return render_template('login.html')
+        users = mongo.db.users
+        login_user = users.find_one({'username': request.form['username']})
+
+        if login_user:
+            if check_password_hash(login_user['password'], request.form['password']):
+                user_obj = User(id=str(login_user['_id']), username=login_user['username'])
+                login_user(user_obj)
+                return redirect(url_for('dashboard'))
+        
+        return 'Invalid, try again or register'
+
+    return render_template('login.html')
 
 @app.route('/logout')
 @login_required
