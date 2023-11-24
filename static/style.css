@@ -1,24 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 body {
-    background-color: #948ded;
+    background-color: #1c0ee3;
     text-align: left;
     margin: 0;
     padding: 0;
 }
 
 .home-page-header {
-    color: #51d1ee;
+    color: #ffffff;
     font-family: 'Alfa Slab One', serif;
     font-size: 20px;
     text-align: center;
+    border: 5px solid #ffffff;
 }
 
 .login-form {
     justify-content: center;
-    background-color: #0d3f4a;
+    background-color: #7743de;
     border-radius: 10px;
     margin: 0 auto;
     padding: 10px;
     width: 200px;
+}
+
+.dashboard-header {
+    color: #ffffff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px;
+    text-align: center;
+    border: 5px solid #ffffff;
+}
+
+.post-form-h2 {
+    color: #ffffff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px;
+    text-align: center;
+    border: 5px solid #ffffff;
+}
+
+.post-form {
+    position: fixed; /* Makes the form float */
+    bottom: 0; /* Positions the form at the bottom of the screen */
+    width: 100%; /* Makes the form span the width of the page */
+    background-color: #7743de;
+    font-size: 25px;
+    font-family: 'Bebas Neue', cursive;
+    color: #ffffff; /* Makes the text white */
+    border-radius: 10px;
+    padding: 10px;
 }

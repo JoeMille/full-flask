@@ -3,6 +3,7 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash 
 
 app = Flask (__name__)
 app.secret_key = 'mysecretkey'
@@ -14,14 +15,19 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 class User(UserMixin):
-    def __init__(self, id):
+    def __init__(self, id, username):
         self.id = id
+        self.username = username 
 
 users = {'Joe': {'password': '12345'}}
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User(user_id)
+    users = mongo.db.users
+    user_data = users.find_one({'_id': ObjectId(user_id)})
+    if user_data:
+        return User(id=str(user_data['_id']), username=user_data['username'])
+    return None
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
