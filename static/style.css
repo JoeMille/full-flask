@@ -42,7 +42,7 @@ body {
 }
 
 .post-form {
-    position: fixed; /* Makes the form float */
+    position: fixed; 
     bottom: 0; /* Positions the form at the bottom of the screen */
     width: 100%; /* Makes the form span the width of the page */
     background-color: #7743de;
@@ -51,4 +51,12 @@ body {
     color: #ffffff; /* Makes the text white */
     border-radius: 10px;
     padding: 10px;
+    display: flex; /* Makes the form a flex container */
+    justify-content: center; /* Centers the form's content horizontally */
+    align-items: center; /* Centers the form's content vertically */
+}
+
+.post-form textarea {
+    width: 80%; /* Makes the text areas 80% of the form's width */
+    height: 50px; /* Adjust this value to change the height of the text areas */
 }

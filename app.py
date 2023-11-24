@@ -29,6 +29,21 @@ def load_user(user_id):
         return User(id=str(user_data['_id']), username=user_data['username'])
     return None
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        users = mongo.db.users
+        existing_user = users.find_one({'username': request.form['username']})
+
+        if existing_user is None:
+            hashpass = generate_password_hash(request.form['password'], method='sha256')
+            users.insert_one({'username': request.form['username'], 'password': hashpass})
+        
+        return 'Username taken! try again or login'
+    
+    return render_template('register.html')
+   
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
