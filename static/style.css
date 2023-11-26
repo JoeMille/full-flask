@@ -87,12 +87,20 @@ body {
     margin-bottom: 20px; 
 }
 
-/* Author-post form styles */
+.dashboard-h2 {
+    color: #ffffff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px;
+    text-align: center;
+    border: 5px solid #ffffff;
+}
 
+/* Author-post form styles */
 .post-form {
     position: fixed; 
     bottom: 0; 
-    width: 100%; 
+    height: 50vh; /* Change to 50% of the viewport height */
+    width: 50%; /* Change to 50% of the viewport width */
     background-color: #7743de;
     font-size: 25px;
     font-family: 'Bebas Neue', cursive;
@@ -102,14 +110,7 @@ body {
     display: flex; 
     flex-direction: column; /* Stack the title bubble and content area vertically */
     align-items: stretch; /* Make the children take up the full width */
-}
-
-.post-form-h2 {
-    color: #ffffff;
-    font-family: 'Bebas Neue', cursive;
-    font-size: 20px;
-    text-align: center;
-    border: 5px solid #ffffff;
+    overflow: auto; /* Add a scrollbar if the content overflows */
 }
 
 .title-bubble {
@@ -121,12 +122,14 @@ body {
 
 .content-area {
     flex-grow: 1; /* Make the content area take up the remaining space */
+    padding-bottom: 5%;
+    overflow: auto; /* Add a scrollbar if the content overflows */
 }
 
 .post-form textarea {
     font-family: 'Bebas Neue', cursive;
     width: 100%; /* Make the textarea take up the full width */
-    height: 200px; 
+    height: 200px; /* Change to auto to fit the content */
 }
 
 /* Post submit button styles */
@@ -143,3 +146,4 @@ body {
     border: 5px solid #ffffff;
     z-index: 9999;
 }
+
