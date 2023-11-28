@@ -46,8 +46,6 @@ Now that mongodb had been installed and routed correctly, the first post app rou
 ![Posting Python](./assets/images/initial-post-setup.png)
 
 Test posts worked correctly after routing errors had been resolved.
-![Mongo Data test](./assets/images/mongodb-post-test.png)
-
 
 Standard user errors encountered included mishandling of sensitive data such as owner specific mongo-URI, not connecting app routes correctly, forgetting to adjust Procfile or not including a reuirements.txt file. However once these errors had been resolved, the application handled user data as expected and individual users could create read update and delete posts. 
 ![CRUD](./assets/images/CRUD-complete-screenshot.png)
