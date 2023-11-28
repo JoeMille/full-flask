@@ -1,1 +1,1 @@
-web: .devcontainer/python build-assets/http_server.py
+web: gunicorn app:app
