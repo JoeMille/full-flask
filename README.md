@@ -80,10 +80,10 @@ Although ending as a non prominent feature due to directional constraints, durin
 ![First JS function](./assets/images/js-test-function-screenshot.png)
 
 
-However, once code testing had finalised, the final hurdle was to deploy successfully to heroku, an application deployment platform. 
+However, once code testing had finalised, the final hurdle was to deploy successfully to heroku, an application deployment platform. Hidden security features once fine whilst running the application locally failed the deployment procedure. With no particular one error in the traceback causing the issues, the application was backed up and sensitive files were copied to external notepads. 
 ![heroku-failure](./assets/images/heroku-fail-to-build.png) 
 
-The final version of Chatter deployed to Heroku at long last and operated as expected, allowing new users to register and create accounts. New and existing users can now view other users posts as well as creating their own content for other users to explore. 
+The final version of Chatter deployed to Heroku at long last and operated as expected, allowing new users to register and create accounts. The issue having been within hiding security features inside a gitignore file that were not being called. New and existing users can now view other users posts as well as creating their own content for other users to explore. 
 ![Final Deployment](./assets/images/final-deployment.png)
 
 
@@ -96,6 +96,7 @@ The final version of Chatter deployed to Heroku at long last and operated as exp
 
 ## Acknowledgements
 
+- Code Institute 
 - W3 Schools
 - Jquery
 - W3C HTML/CSS Validator 
