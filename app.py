@@ -117,6 +117,7 @@ def delete_post(post_id):
         flash('You cannot delete this post', 'danger')
     return redirect(url_for('dashboard'))
 
+# store post function
 def store_post(title, content):
     post_data = {
         'title': title,
@@ -124,6 +125,7 @@ def store_post(title, content):
     }
     posts.insert_one(post_data)
 
+# edit post route
 @app.route('/edit_post/<post_id>', methods=['GET', 'POST'])
 @login_required
 def edit_post(post_id):
@@ -142,6 +144,7 @@ def edit_post(post_id):
     else:
         flash('You cannot edit this post', 'danger')
         return redirect(url_for('dashboard'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
