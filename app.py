@@ -1,10 +1,11 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash 
-import os
+
 
 # Check if environment is local or production
 if os.path.exists('env.py'):
@@ -12,7 +13,7 @@ if os.path.exists('env.py'):
 
 app = Flask (__name__)
 app.secret_key = 'mysecretkey'
-app.config["MONGO_URI"] = env.MONGO_URI
+app.config["MONGO_URI"] = os.getenv('MONGO_URI')
 mongo = PyMongo(app)
 
 # Connect to MongoDB
