@@ -4,9 +4,13 @@ from flask_pymongo import PyMongo
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash 
-import env
-# Create Flask App, set secret key, configure mongoDB, initialise login manager
+import os
 
+# Check if environment is local or production
+if os.path.exists('env.py'):
+    import env
+
+    
 app = Flask (__name__)
 app.secret_key = 'mysecretkey'
 app.config["MONGO_URI"] = env.MONGO_URI
