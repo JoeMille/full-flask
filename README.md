@@ -9,11 +9,13 @@
 2. [User Stories](#user-stories)
 3. [How To Use](#how-to-use-chatter)
 4. [Project Build](#project-build)
-5. [Testing Procedures](#testing-procedures)
-6. [Technologies Used](#technologies-used)
-7. [Acknowledgements](#acknowledgements)
-8. [Libraries Used](#libraries-used)
-9. [Security Procedures](#security-procedures)
+5. [Security Procedures](#security-procedures)
+6. [Tetsing-Procedure](#testing-procedures)
+7. [Technologies Used](#technologies-used)
+8. [Acknowledgements](#acknowledgements)
+9. [Libraries Used](#libraries-and-dependencies-used)
+10. [Further Information](#further-information)
+
 
 ## Project Description
 
@@ -35,17 +37,20 @@ To use Chatter, simply navigate to the sites login page and create a profile by 
 
 ## Project Build
 
-Building a flask application which could handle user input and registration proved to be a trying task. The inital site design began with drawing the routes for the application on a whiteboard and deciding which best way to provide proof of understanding for handling user data and authetication as well as secure web practices and user friendly design. This began with creating a base html file which extended to an index/login/registration page and once successfully validated, to a dashboard page which recognised users and welcomed them based on their username and allowed post/delete privileges to the database. [HTML Base](./assets/images/basehtml-boilerplate.png)
+Building a flask application which could handle user input and registration proved to be a trying task. The inital site design began with drawing the routes for the application on a whiteboard and deciding which best way to provide proof of understanding for handling user data and authetication as well as secure web practices and user friendly design. This began with creating a base html file which extended to an index/login/registration page and once successfully validated, to a dashboard page which recognised users and welcomed them based on their username and allowed post/delete privileges to the database. ![HTML Base](./assets/images/basehtml-boilerplate.png)
 
-Once the application had been organised and passed through styling and simple java validation, the next step was to include the mongodb database(community version). Mongodb allows a free tier platform to allow prospective developers to host smaller databases which it handles within its own cloud platform. [mongodb Test](./assets/images/mongodb-post-test.png)
+Once the application had been organised and passed through styling and simple java validation, the next step was to include the mongodb database(community version). Mongodb allows a free tier platform to allow prospective developers to host smaller databases which it handles within its own cloud platform. 
+![mongodb Test](./assets/images/mongodb-post-test.png)
 
-Now that mongodb had been installed and routed correctly, the first post app routes were written to begin adding functionality to the user database. [Posting Python](./assets/images/initial-post-setup.png)
+Now that mongodb had been installed and routed correctly, the first post app routes were written to begin adding functionality to the user database. 
+![Posting Python](./assets/images/initial-post-setup.png)
 
 Test posts worked correctly after routing errors had been resolved.
-[Mongo Data test](./assets/images/mongodb-post-test.png)
+![Mongo Data test](./assets/images/mongodb-post-test.png)
 
 
-Standard user errors encountered included mishandling of sensitive data such as owner specific mongo-URI, not connecting app routes correctly, forgetting to adjust Procfile or not including a reuirements.txt file. However once these errors had been resolved, the application handled user data as expected and individual users could create read update and delete posts. [CRUD](./assets/images/CRUD-complete-screenshot.png)
+Standard user errors encountered included mishandling of sensitive data such as owner specific mongo-URI, not connecting app routes correctly, forgetting to adjust Procfile or not including a reuirements.txt file. However once these errors had been resolved, the application handled user data as expected and individual users could create read update and delete posts. 
+![CRUD](./assets/images/CRUD-complete-screenshot.png)
 
 Now that user data could be manipulated and consequential steps to ensure that privileged data was removed from public view, it was time to push the application to heroku. The file structure of the application immediately blocked heroku from connecting, and thus ensued a process of backing up files and adding/changing/deleting and rewriting connecting routes to eventually correctly display the mongo data when deployed to the cloud as an application. 
 
@@ -54,21 +59,25 @@ Now that user data could be manipulated and consequential steps to ensure that p
 
 The Chatter application incorporates security measures to safeguard user data and control access to sensitive features. Notably, password hashing is employed during user authentication using the generate_password_hash function from Flask's werkzeug.security module. This function ensures the secure storage of hashed passwords in the database, enhancing overall security by preventing the exposure of plain-text passwords in the event of a data breach.
 
-Additionally, Chatter integrates Flask-Login for efficient user session management and access control. The initialization and configuration of the LoginManager ensure a secure handling of user authentication, supported by the definition of the User class and implementation of the load_user function for retrieving user information from the MongoDB database. ![Login Code](./assets/images/login-routes.png)
+Additionally, Chatter integrates Flask-Login for efficient user session management and access control. The initialization and configuration of the LoginManager ensure a secure handling of user authentication, supported by the definition of the User class and implementation of the load_user function for retrieving user information from the MongoDB database. 
+![Login Code](./assets/images/login-routes.png)
 
 ---
 
 ## Testing Procedures
 
-Testing procedures for this application include writing custom python tests within a tests.py file which allow the author to take separate functions within the application file and systematically check each feature for bugs, such as testing the user registration route. ![RegistrationTest](./assets/images/first-python-test.png)
+Testing procedures for this application include writing custom python tests within a tests.py file which allow the author to take separate functions within the application file and systematically check each feature for bugs, such as testing the user registration route. 
+![RegistrationTest](./assets/images/first-python-test.png)
 
-HTML and CSS properties although not a huge feature of understanding within the MS3/Chatter project were tested through tools such as HTML/CSS Validators and Googles Lighthouse testing environment, providing the author with valuable feedback on how to better structure the applications frontend. ![LighthouseTest](./assets/images/lighthouse-score-dashboard.png)
+HTML and CSS properties although not a huge feature of understanding within the MS3/Chatter project were tested through tools such as HTML/CSS Validators and Googles Lighthouse testing environment, providing the author with valuable feedback on how to better structure the applications frontend. 
+![LighthouseTest](./assets/images/lighthouse-score-dashboard.png)
 
 All styles had to pass through the W3C CSS validator and after trial and error passed to expected CSS3 levels.
 ![W3C-Valid](./assets/images/w3c-css-validator.png)
 
 
-Although ending as a non prominent feature due to directional constraints, during development any and all javascript functionality was tested, which began with a simple test function to ensure static js files were being accessed within the flask application. ![First JS function](./assets/images/js-test-function-screenshot.png)
+Although ending as a non prominent feature due to directional constraints, during development any and all javascript functionality was tested, which began with a simple test function to ensure static js files were being accessed within the flask application. 
+![First JS function](./assets/images/js-test-function-screenshot.png)
 
 
 However, once code testing had finalised, the final hurdle was to deploy successfully to heroku, an application deployment platform. 
