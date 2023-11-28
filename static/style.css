@@ -163,8 +163,6 @@ body {
 }
 
 .edit-post-form {
-    position: fixed; 
-    bottom: 0; 
     height: 50vh; 
     width: 50%; 
     background-color: #7743de;
