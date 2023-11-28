@@ -23,7 +23,7 @@ class User(UserMixin):
         self.id = id
         self.username = username 
 
-users = {'Joe': {'password': '12345'}}
+
 
 # Login manager user loader
 
