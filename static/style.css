@@ -19,6 +19,22 @@ body {
     border: 5px solid #ffffff;
 }
 
+.site-footer {
+    background-color: #7743de;
+    color: #ffffff;
+    padding: 10px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.footer-link {
+    color: #ffffff;
+    margin: 0 10px;
+}
+
 /* Login/ logout and register forms */
 
 .form-container {
