@@ -12,7 +12,7 @@ class TestFlaskApp(TestCase):
         return app
 
     def setUp(self):
-        # Clear the test database
+        
         mongo.db.users.delete_many({})
 
     def tearDown(self):
@@ -22,6 +22,13 @@ class TestFlaskApp(TestCase):
         response = self.client.post('/register', data={'username': 'test_user', 'password': 'test_password'})
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'User created! Please login.', response.data)
+
+
+    def test_login_route(self):
+        
+        response = self.client.post('/login', data={'username': 'test_user', 'password': 'test_password'})
+        self.assertEqual(response.status_code, 302)  # Expecting a redirect to dashboard
+
 
 if __name__ == '__main__':
     unittest.main()

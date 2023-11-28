@@ -43,7 +43,11 @@ Chatter also integrates Flask-Login to manage user sessions and access control. 
 
 ## Testing Procedures
 
-Testing procedures for this application include but are 
+Testing procedures for this application include writing custom python tests within a tests.py file which allow the author to take separate functions within the application file and systematically check each feature for bugs, such as testing the user registration route. ![RegistrationTest](./assets/images/first-python-test.png)
+
+HTML and CSS properties although not a huge feature of understanding within the MS3/Chatter project were tested through tools such as HTML/CSS Validators and Googles Lighthouse testing environment, providing the author with valuable feedback on how to better structure the applications frontend. ![LighthouseTest](./assets/images/lighthouse-score-dashboard.png)
+
+
 
 
 ## Technologies Used
@@ -53,6 +57,14 @@ Testing procedures for this application include but are
 - **MongoDB Community:** Database management system for storing and retrieving data.
 
 ## Acknowledgements
+
+Jquery
+HTML/CSS Validator 
+Flask
+Werkzeug
+Mongodb
+Mongo community edition 
+bootstrap
 
 
 ## Libraries Used
