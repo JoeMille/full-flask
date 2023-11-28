@@ -163,8 +163,8 @@ body {
 }
 
 .edit-post-form {
-    height: 50vh; 
-    width: 50%; 
+    height: 80vh; /* Adjust as needed */
+    width: 80%; /* Adjust as needed */
     background-color: #7743de;
     font-size: 25px;
     font-family: 'Bebas Neue', cursive;
@@ -175,6 +175,16 @@ body {
     flex-direction: column; 
     align-items: stretch; 
     overflow: auto; 
+    margin: auto; /* Center the form */
+}
+
+.edit-post-textarea {
+    font-size: 25px;
+    font-family: 'Bebas Neue', cursive;
+    color: #ffffff; 
+    background-color: #7743de;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 /* and so on for the other elements */
