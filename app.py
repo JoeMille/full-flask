@@ -6,6 +6,7 @@ from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash 
 
 # Create Flask App, set secret key, configure mongoDB, initialise login manager
+
 app = Flask (__name__)
 app.secret_key = 'mysecretkey'
 app.config["MONGO_URI"] = "mongodb+srv://chefjoemiller1992:Password@cluster0.oydtt0h.mongodb.net/myDatabase?tls=true&tlsAllowInvalidCertificates=true"
@@ -16,6 +17,7 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 # User class for login manager
+
 class User(UserMixin):
     def __init__(self, id, username):
         self.id = id
@@ -24,6 +26,7 @@ class User(UserMixin):
 users = {'Joe': {'password': '12345'}}
 
 # Login manager user loader
+
 @login_manager.user_loader
 def load_user(user_id):
     users = mongo.db.users
@@ -33,6 +36,7 @@ def load_user(user_id):
     return None
 
 # register new user route
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':

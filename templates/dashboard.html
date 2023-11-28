@@ -6,8 +6,9 @@
 {% block content %}
 
 <!-- Displays dashboard header welcoming user by their login name-->
+
 <header class="dashboard-header">
-<h1>DASHBOARD</h1>
+    <h1>DASHBOARD</h1>
 </header>
 
 <!-- to display post  updates -->
@@ -16,7 +17,9 @@
 <a href="{{ url_for('logout') }}" class="index-page-logout">Logout</a>
 
 <!-- Displays post updates (Users can delete their own posts)-->
+
 <div class="posts-container">
+
 {% for post in posts %}
     <div class="post">
         <h2 class="post-title">{{ post.title }}</h2>
@@ -44,7 +47,7 @@
     <input type="submit" value="Submit" class="post-submit-button">
 </form>
 
-
+<!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{{ url_for('static', filename='script.js')}}"></script>
 
