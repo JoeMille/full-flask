@@ -21,6 +21,7 @@ body {
 
 .site-footer {
     background-color: #7743de;
+    font-family: 'Bebas Neue', cursive;
     color: #ffffff;
     padding: 10px;
     position: fixed;
@@ -28,6 +29,7 @@ body {
     bottom: 0;
     width: 100%;
     text-align: center;
+    z-index: 10000; 
 }
 
 .footer-link {
@@ -158,7 +160,7 @@ body {
     width: 200px; 
     height: 50px;
     line-height: 50px; 
-    margin: 20px auto; 
+    margin: 20px auto 70px; /* Adjust the bottom margin as needed */
     background-color: #ffffff;
     font-family: 'Bebas Neue', cursive;
     font-size: 40px;
