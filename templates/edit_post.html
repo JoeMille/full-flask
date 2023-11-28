@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h1>Edit Post</h1>
-    <form method="POST">
-        <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title" value="{{ post.title }}" required><br>
-        <label for="content">Content:</label><br>
-        <textarea id="content" name="content" required>{{ post.content }}</textarea><br>
-        <input type="submit" value="Submit">
+    <h1 class="edit-post-title">Edit Post</h1>
+    <form method="POST" class="edit-post-form">
+        <label for="title" class="edit-post-label">Title:</label><br>
+        <input type="text" id="title" name="title" value="{{ post.title }}" required class="edit-post-input"><br>
+        <label for="content" class="edit-post-label">Content:</label><br>
+        <textarea id="content" name="content" required class="edit-post-textarea">{{ post.content }}</textarea><br>
+        <input type="submit" value="Submit" class="edit-post-submit">
     </form>
 {% endblock %}
