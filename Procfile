@@ -1,1 +1,1 @@
-web: python build-assets/http_server.py
+web: .devcontainer/python build-assets/http_server.py
