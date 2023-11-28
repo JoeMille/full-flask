@@ -10,27 +10,27 @@ import os
 if os.path.exists('env.py'):
     import env
 
-    
 app = Flask (__name__)
 app.secret_key = 'mysecretkey'
 app.config["MONGO_URI"] = env.MONGO_URI
 mongo = PyMongo(app)
+
+# Connect to MongoDB
+client = MongoClient(app.config["MONGO_URI"])
+db = client['blog_database']
+posts = db['posts']
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 # User class for login manager
-
 class User(UserMixin):
     def __init__(self, id, username):
         self.id = id
         self.username = username 
 
-
-
 # Login manager user loader
-
 @login_manager.user_loader
 def load_user(user_id):
     users = mongo.db.users
@@ -40,7 +40,6 @@ def load_user(user_id):
     return None
 
 # register new user route
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -55,7 +54,7 @@ def register():
             return 'Username taken! try again or login'
     
     return render_template('register.html')
-   
+
 # login route
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -104,11 +103,6 @@ def dashboard():
     posts = mongo.db.posts.find()
     return render_template('dashboard.html', posts=posts)
 
-# Connect to MongoDB
-client = MongoClient('mongodb://localhost:27017/')
-db = client['blog_database']
-posts = db['posts']
-
 # edit and delete posts route
 @app.route('/delete_post/<post_id>', methods=['POST'])
 @login_required
@@ -128,8 +122,6 @@ def store_post(title, content):
         'content': content
     }
     posts.insert_one(post_data)
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
