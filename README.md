@@ -1,7 +1,7 @@
 test users
 
-jason 12345
-jemima2 12345
+jason 1234
+
 
 /admin/ admin Password1
 
@@ -33,6 +33,10 @@ The User is provided with a registration portal which handles a username/passwor
    - I want to create, edit, and delete my blog posts.
    - I want to be able to create and remove posts that exist in a secure database
 
+## How to use Chatter
+
+To use Chatter, simply navigate to the sites login page and create a profile by providing a basic username and password, once registered, submit your user login data and you will be placed within your personal dashboard. Within the dashboard the user can view all posts authored by other registered users as well make their own posts and remove these posts at any time. User data such as username, password, posts and the ability to edit these posts is hosted securely within the mongodb database. 
+
 ## Security Procedures
 
 The Chatter application demonstrates several security features that help protect user data and authenticate access to sensitive routes. One key security feature is the use of password hashing for user authentication. The application employs the `generate_password_hash` function from Flask's `werkzeug.security` module when creating a new user. This function securely hashes the user's password before storing it in the database. During the login process, the application uses `check_password_hash` to verify the entered password against the hashed password stored in the database. This approach enhances security by preventing the exposure of plain-text passwords, even in the event of a data breach.
@@ -47,6 +51,9 @@ Testing procedures for this application include writing custom python tests with
 
 HTML and CSS properties although not a huge feature of understanding within the MS3/Chatter project were tested through tools such as HTML/CSS Validators and Googles Lighthouse testing environment, providing the author with valuable feedback on how to better structure the applications frontend. ![LighthouseTest](./assets/images/lighthouse-score-dashboard.png)
 
+All styles had to pass through the W3C CSS validator and after trial and error passed to expected CSS3 levels.
+![W3C-Valid](./assets/images/w3c-css-validator.png)
+
 
 
 
@@ -60,11 +67,13 @@ HTML and CSS properties although not a huge feature of understanding within the 
 
 Jquery
 HTML/CSS Validator 
+W3C validator
 Flask
 Werkzeug
 Mongodb
 Mongo community edition 
 bootstrap
+Heroku
 
 
 ## Libraries Used
