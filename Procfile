@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: python build-assets/http_server.py
