@@ -87,15 +87,16 @@ The final version of Chatter deployed to Heroku at long last and operated as exp
 
 ## Acknowledgements
 
-Jquery
-W3C HTML/CSS Validator 
-Flask (Used to create templates and handle application data)
-Werkzeug (Security feature used to hash passwords secure data)
-Mongodb/community-edition (Database Management System handling user data such as posts and user registration)
-Bootstrap
-Heroku (Cloud application deployment platform)
-Google Fonts
-GitHub
+- W3 Schools
+- Jquery
+- W3C HTML/CSS Validator 
+- Flask (Used to create templates and handle application data)
+- Werkzeug (Security feature used to hash passwords secure data)
+- Mongodb/community-edition (Database Management System handling user data such - as posts and user registration)
+- Bootstrap
+- Heroku (Cloud application deployment platform)
+- Google Fonts
+- GitHub
 
 
 ## Libraries and Dependencies Used

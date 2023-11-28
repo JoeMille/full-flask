@@ -124,5 +124,24 @@ def store_post(title, content):
     }
     posts.insert_one(post_data)
 
+@app.route('/edit_post/<post_id>', methods=['GET', 'POST'])
+@login_required
+def edit_post(post_id):
+    posts = mongo.db.posts
+    post = posts.find_one({'_id': ObjectId(post_id)})
+    if post and post['author'] == current_user.username:
+        if request.method == 'POST':
+            posts.update_one({'_id': ObjectId(post_id)}, {'$set': {
+                'title': request.form['title'],
+                'content': request.form['content']
+            }})
+            flash('Your post has been updated!', 'success')
+            return redirect(url_for('dashboard'))
+        else:
+            return render_template('edit_post.html', post=post)
+    else:
+        flash('You cannot edit this post', 'danger')
+        return redirect(url_for('dashboard'))
+
 if __name__ == '__main__':
     app.run(debug=True)
