@@ -10,6 +10,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # Check if environment is local or production
 if os.path.exists('env.py'):
     import env
+    ADMIN_USERNAME = env.ADMIN_USERNAME
+    ADMIN_PASSWORD = env.ADMIN_PASSWORD
 
 app = Flask (__name__)
 app.secret_key = 'mysecretkey'
@@ -30,6 +32,7 @@ class User(UserMixin):
     def __init__(self, id, username):
         self.id = id
         self.username = username 
+        self.admin = admin
 
 # Login manager user loader
 @login_manager.user_loader
@@ -37,7 +40,7 @@ def load_user(user_id):
     users = mongo.db.users
     user_data = users.find_one({'_id': ObjectId(user_id)})
     if user_data:
-        return User(id=str(user_data['_id']), username=user_data['username'])
+        return User(id=str(user_data['_id']), username=user_data['username'], admin=user_data['admin'])
     return None
 
 # register new user route
@@ -49,7 +52,8 @@ def register():
 
         if existing_user is None:
             hashpass = generate_password_hash(request.form['password'])
-            users.insert_one({'username': request.form['username'], 'password': hashpass})
+            is_admin = request.form['username'] == ADMIN_USERNAME and request.form['password'] == ADMIN_PASSWORD
+            users.insert_one({'username': request.form['username'], 'password': hashpass, 'admin': is_admin})
             return 'User created! Please login.'
         else:
             return 'Username taken! try again or login'
