@@ -48,25 +48,18 @@ Now that mongodb had been installed and routed correctly, the first post app rou
 Test posts worked correctly after routing errors had been resolved.
 
 Standard user errors encountered included mishandling of sensitive data such as owner specific mongo-URI, not connecting app routes correctly, forgetting to adjust Procfile or not including a reuirements.txt file. However once these errors had been resolved, the application handled user data as expected and individual users could create read update and delete posts. 
-![CRUD](./assets/images/CRUD-complete-screenshot.png)
+![CRUD](./assets/images/user-function-complete.png)
 
 Now that user data could be manipulated and consequential steps to ensure that privileged data was removed from public view, it was time to push the application to heroku. The file structure of the application immediately blocked heroku from connecting, and thus ensued a process of backing up files and adding/changing/deleting and rewriting connecting routes to eventually correctly display the mongo data when deployed to the cloud as an application. 
 
 ## Features
 
-### User Registration
+## User Registration
 
-Users can register for a new account. Passwords are securely hashed before being stored.
-
-```python
-hashpass = generate_password_hash(request.form["password"])
-users.insert_one({
-    "username": request.form["username"],
-    "password": hashpass,
-    "admin": is_admin,
-})
+Users can register for a new account. Passwords are securely hashed before being stored. (See security features section)
 
 ## User data input/upload
+
 Once users are registered they can use the post section of chatter to upload comments/messages which are instantly visible to other chatter users.
 Users are also able to their own delete historic posts as well as providing them with the ability to update/amend said posts.
 
@@ -91,11 +84,11 @@ All styles had to pass through the W3C CSS validator and after trial and error p
 
 
 Although ending as a non prominent feature due to directional constraints, during development any and all javascript functionality was tested, which began with a simple test function to ensure static js files were being accessed within the flask application. 
-![First JS function](./assets/images/js-test-function-screenshot.png)
+![First JS function](./assets/images/js-test-function.png)
 
 
 However, once code testing had finalised, the final hurdle was to deploy successfully to heroku, an application deployment platform. Hidden security features once fine whilst running the application locally failed the deployment procedure. With no particular one error in the traceback causing the issues, the application was backed up and sensitive files were copied to external notepads. 
-![heroku-failure](./assets/images/heroku-fail-to-build.png) 
+![heroku-failure](./assets/images/heroku-build-error.png) 
 
 ##Deploying to Heroku
 To get a cloned version of Chatter up and running on Heroku, first, make sure you've got the Heroku CLI and Git installed. Clone your repo with: git clone https://github.com/JoeMille/full-flask and enter into the project directory with the command: cd your-repo. 
