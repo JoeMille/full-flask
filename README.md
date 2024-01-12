@@ -20,7 +20,7 @@
 
 ## Project Description
 
-The User is provided with a registration portal which handles a username/password combination and stores the data securely using mongodb-community. Once authorised the user is directed to a dashboard page which provides a post-view section of posts authored by registered users and a post-form section which acts as a submission function for new posts. The front of the application was developed using HTML/CSS with some slight jQuery functionality, using a flask template which is inherited across login page and dashboard page. The back end of the application is written in python using mongodb as a database management system, holding user data such as login material(username/password), posts authored by user, and the ability to delete these posts from the database. 
+The user is provided with a registration portal that handles a username/password combination and stores the data securely using MongoDB Community. Once authorized, the user is directed to a dashboard page that provides a post-view section of posts authored by registered users and a post-form section, which acts as a submission function for new posts. The front end of the application was developed using HTML/CSS with some slight jQuery functionality, utilizing a Flask template that is inherited across the login page and dashboard page. The backend of the application is written in Python, using MongoDB as a database management system. It holds user data such as login credentials (username/password), posts authored by the user, and the ability to delete these posts from the database.
 
 
 ## User Stories
@@ -38,7 +38,8 @@ To use Chatter, simply navigate to the sites login page and create a profile by 
 
 ## Project Build
 
-Building a flask application which could handle user input and registration proved to be a trying task. The inital site design began with drawing the routes for the application on a whiteboard and deciding which best way to provide proof of understanding for handling user data and authetication as well as secure web practices and user friendly design. This began with creating a base html file which extended to an index/login/registration page and once successfully validated, to a dashboard page which recognised users and welcomed them based on their username and allowed post/delete privileges to the database. ![HTML Base](./assets/images/basehtml-boilerplate.png)
+Building a Flask application that could handle user input and registration proved to be a challenging task. The initial site design started with mapping out the routes for the application on a whiteboard and determining the best approach to demonstrate an understanding of handling user data, authentication, secure web practices, and user-friendly design. This process began by creating a base HTML file, which extended to include an index/login/registration page. Upon successful validation, users were redirected to a dashboard page that recognized them and welcomed them based on their username, granting post/delete privileges to the database. 
+![HTML Base](./assets/images/basehtml-boilerplate.png)
 
 Once the application had been organised and passed through styling and simple java validation, the next step was to include the mongodb database(community version). Mongodb allows a free tier platform to allow prospective developers to host smaller databases which it handles within its own cloud platform. 
 ![mongodb Test](./assets/images/mongodb-post-test.png)
@@ -58,7 +59,7 @@ Now that user data could be manipulated and consequential steps to ensure that p
 
 ## Database management and capabilities 
 
-This MongoDB-backed project allows users to create accounts with unique usernames and securelt stored passwords. Once registered, users can log in securely through authentication and access their personalized dashboards. The dashboard provides a comprehensive view of other users' comments while allowing users to create, edit, and delete their own posts. Security measures are in place to ensure users can only modify or remove their own posts, preserving the integrity of the system. The visual schema below outlines the key entities and relationships, providing an outline of the data-base and how elements are  managed. 
+This MongoDB-backed project allows users to create accounts with unique usernames and securely stored passwords. Once registered, users can log in securely through authentication and access their personalized dashboards. The dashboard provides a view of other users comments while allowing users to create, edit, and delete their own posts. Security measures are in place to ensure users can only modify or remove their own posts, preserving the integrity of the system. The visual schema below outlines the key entities and relationships, providing an outline of the data-base and how elements are  managed. 
 ![Database](./assets/images/data-base-setup.png)
 
 
