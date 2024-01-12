@@ -52,15 +52,31 @@ Standard user errors encountered included mishandling of sensitive data such as 
 
 Now that user data could be manipulated and consequential steps to ensure that privileged data was removed from public view, it was time to push the application to heroku. The file structure of the application immediately blocked heroku from connecting, and thus ensued a process of backing up files and adding/changing/deleting and rewriting connecting routes to eventually correctly display the mongo data when deployed to the cloud as an application. 
 
-## Security Procedures
+## Features
 
+### User Registration
+
+Users can register for a new account. Passwords are securely hashed before being stored.
+
+```python
+hashpass = generate_password_hash(request.form["password"])
+users.insert_one({
+    "username": request.form["username"],
+    "password": hashpass,
+    "admin": is_admin,
+})
+
+## User data input/upload
+Once users are registered they can use the post section of chatter to upload comments/messages which are instantly visible to other chatter users.
+Users are also able to their own delete historic posts as well as providing them with the ability to update/amend said posts.
+
+## Security Procedures
 
 The Chatter application incorporates security measures to safeguard user data and control access to sensitive features. Notably, password hashing is employed during user authentication using the generate_password_hash function from Flask's werkzeug.security module. This function ensures the secure storage of hashed passwords in the database, enhancing overall security by preventing the exposure of plain-text passwords in the event of a data breach.
 
 Additionally, Chatter integrates Flask-Login for efficient user session management and access control. The initialization and configuration of the LoginManager ensure a secure handling of user authentication, supported by the definition of the User class and implementation of the load_user function for retrieving user information from the MongoDB database. 
 ![Login Code](./assets/images/login-routes.png)
 
----
 
 ## Testing Procedures
 
@@ -80,6 +96,13 @@ Although ending as a non prominent feature due to directional constraints, durin
 
 However, once code testing had finalised, the final hurdle was to deploy successfully to heroku, an application deployment platform. Hidden security features once fine whilst running the application locally failed the deployment procedure. With no particular one error in the traceback causing the issues, the application was backed up and sensitive files were copied to external notepads. 
 ![heroku-failure](./assets/images/heroku-fail-to-build.png) 
+
+##Deploying to Heroku
+To get a cloned version of Chatter up and running on Heroku, first, make sure you've got the Heroku CLI and Git installed. Clone your repo with: git clone https://github.com/JoeMille/full-flask and enter into the project directory with the command: cd your-repo. 
+
+Next, create a new Heroku app using the command: heroku create. If your app needs any special settings, set them up as environment variables with heroku config:set KEY=VALUE. Now, it's time to deploy – just push your code to Heroku with git push heroku master. Open your app in the browser with heroku open.
+
+If your app needs a specific buildpack or you run into any issues, check the Heroku logs with heroku logs --tail. 
 
 The final version of Chatter deployed to Heroku at long last and operated as expected, allowing new users to register and create accounts. The issue having been within hiding security features inside a gitignore file that were not being called. New and existing users can now view other users posts as well as creating their own content for other users to explore. 
 ![Final Deployment](./assets/images/final-deployment.png)
