@@ -22,6 +22,7 @@ if os.path.exists("env.py"):
     ADMIN_PASSWORD = env.ADMIN_PASSWORD
 
 app = Flask(__name__)
+app.secret_key = os.environ.get('SECRET_KEY')
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 mongo = PyMongo(app)
 
