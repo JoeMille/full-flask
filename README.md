@@ -9,12 +9,13 @@
 2. [User Stories](#user-stories)
 3. [How To Use](#how-to-use-chatter)
 4. [Project Build](#project-build)
-5. [Security Procedures](#security-procedures)
-6. [Tetsing-Procedure](#testing-procedures)
-7. [Technologies Used](#technologies-used)
-8. [Acknowledgements](#acknowledgements)
-9. [Libraries Used](#libraries-and-dependencies-used)
-10. [Further Information](#further-information)
+5. [Features](#features)
+6. [Security Procedures](#security-procedures)
+7. [Tetsing-Procedure](#testing-procedures)
+8. [Technologies Used](#technologies-used)
+9. [Acknowledgements](#acknowledgements)
+10. [Libraries Used](#libraries-and-dependencies-used)
+11. [Further Information](#further-information)
 
 
 ## Project Description
@@ -52,7 +53,14 @@ Standard user errors encountered included mishandling of sensitive data such as 
 
 Now that user data could be manipulated and consequential steps to ensure that privileged data was removed from public view, it was time to push the application to heroku. The file structure of the application immediately blocked heroku from connecting, and thus ensued a process of backing up files and adding/changing/deleting and rewriting connecting routes to eventually correctly display the mongo data when deployed to the cloud as an application. 
 
-## Features
+# Features:
+
+
+## Database management and capabilities 
+
+This MongoDB-backed project allows users to create accounts with unique usernames and securelt stored passwords. Once registered, users can log in securely through authentication and access their personalized dashboards. The dashboard provides a comprehensive view of other users' comments while allowing users to create, edit, and delete their own posts. Security measures are in place to ensure users can only modify or remove their own posts, preserving the integrity of the system. The visual schema below outlines the key entities and relationships, providing an outline of the data-base and how elements are  managed. 
+![Database](./assets/images/data-base-setup.png)
+
 
 ## User Registration
 
