@@ -95,7 +95,9 @@ def login():
         if user_login:
             if check_password_hash(user_login["password"], request.form["password"]):
                 user_obj = User(
-                    id=str(user_login["_id"]), username=user_login["username"], admin=user_login["admin"]
+                    id=str(user_login["_id"]),
+                    username=user_login["username"],
+                    admin=user_login["admin"]
                 )
                 login_user(user_obj)
                 return redirect(url_for("dashboard"))
