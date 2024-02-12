@@ -18,8 +18,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
-    ADMIN_USERNAME = env.ADMIN_USERNAME
-    ADMIN_PASSWORD = env.ADMIN_PASSWORD
+ADMIN_USERNAME = os.environ.get('ADMIN_USERNAME')
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY')
@@ -67,15 +66,10 @@ def register():
 
         if existing_user is None:
             hashpass = generate_password_hash(request.form["password"])
-            is_admin = (
-                request.form["username"] == ADMIN_USERNAME
-                and request.form["password"] == ADMIN_PASSWORD
-            )
             users.insert_one(
                 {
                     "username": request.form["username"],
                     "password": hashpass,
-                    "admin": is_admin,
                 }
             )
             return "User created! Please login."
