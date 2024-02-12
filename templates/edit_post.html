@@ -7,8 +7,8 @@
     <form method="POST" class="edit-post-form">
         <label for="title" class="edit-post-label">Title:</label><br>
         <input type="text" id="title" name="title" value="{{ post.title }}" required class="edit-post-input"><br>
-        <label for="content" class="edit-post-label">Content:</label><br>
-        <textarea id="content" name="content" required class="edit-post-textarea">{{ post.content }}</textarea><br>
+        <label for="edit-post-label" class="edit-post-label">Content:</label><br>
+        <textarea id="edit-post-text-area" name="edit-post-text-area" required class="edit-post-textarea">{{ post.content }}</textarea><br>
         <input type="submit" value="Submit" class="edit-post-submit">
     </form>
 {% endblock %}

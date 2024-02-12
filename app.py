@@ -43,6 +43,7 @@ class User(UserMixin):
         self.admin = admin
 
 
+
 # Login manager user loader
 @login_manager.user_loader
 def load_user(user_id):
@@ -52,7 +53,7 @@ def load_user(user_id):
         return User(
             id=str(user_data["_id"]),
             username=user_data["username"],
-            admin=user_data["admin"],
+            admin=user_data.get("admin", False),
         )
     return None
 
@@ -91,7 +92,7 @@ def login():
                 user_obj = User(
                     id=str(user_login["_id"]),
                     username=user_login["username"],
-                    admin=user_login["admin"]
+                    admin=user_login.get("admin", False),
                 )
                 login_user(user_obj)
                 return redirect(url_for("dashboard"))
@@ -174,7 +175,7 @@ def edit_post(post_id):
                 {
                     "$set": {
                         "title": request.form["title"],
-                        "content": request.form["content"],
+                        "content": request.form["edit-post-text-area"],
                     }
                 },
             )
